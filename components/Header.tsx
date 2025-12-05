@@ -30,13 +30,13 @@ const Header = () => {
       isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
     }`}>
       <div className="container-custom">
-        <div className="flex items-center justify-between h-16 lg:h-20">
+        <div className="flex items-center justify-between h-14 md:h-16 lg:h-20">
           {/* Logo */}
-          <div className="flex items-center space-x-2">
-            <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-r from-primary-600 to-accent-500 rounded-lg flex items-center justify-center">
-              <Smartphone className="w-5 h-5 md:w-6 md:h-6 text-white" />
+          <div className="flex items-center space-x-1.5 md:space-x-2">
+            <div className="w-7 h-7 md:w-10 md:h-10 bg-gradient-to-r from-primary-600 to-accent-500 rounded-lg flex items-center justify-center shrink-0">
+              <Smartphone className="w-4 h-4 md:w-6 md:h-6 text-white" />
             </div>
-            <span className={`text-lg md:text-2xl font-bold transition-colors ${
+            <span className={`text-base md:text-2xl font-bold transition-colors whitespace-nowrap ${
               isScrolled ? 'text-dark-900' : 'text-white'
             }`}>
               Scorpions<span className="gradient-text">Tech</span>
