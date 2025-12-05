@@ -33,10 +33,10 @@ const Header = () => {
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <div className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-gradient-to-r from-primary-600 to-accent-500 rounded-lg flex items-center justify-center">
-              <Smartphone className="w-6 h-6 text-white" />
+            <div className="w-8 h-8 md:w-10 md:h-10 bg-gradient-to-r from-primary-600 to-accent-500 rounded-lg flex items-center justify-center">
+              <Smartphone className="w-5 h-5 md:w-6 md:h-6 text-white" />
             </div>
-            <span className={`text-2xl font-bold transition-colors ${
+            <span className={`text-lg md:text-2xl font-bold transition-colors ${
               isScrolled ? 'text-dark-900' : 'text-white'
             }`}>
               Scorpions<span className="gradient-text">Tech</span>
