@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { Mail, Phone, MapPin, Send, CheckCircle, MessageCircle } from 'lucide-react'
+import { Mail, Phone, MapPin, Send, CheckCircle, MessageCircle, AlertCircle } from 'lucide-react'
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -13,13 +13,96 @@ const Contact = () => {
     message: ''
   })
   const [isSubmitted, setIsSubmitted] = useState(false)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitError, setSubmitError] = useState('')
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Aqui você implementaria o envio do formulário
-    console.log('Form submitted:', formData)
-    setIsSubmitted(true)
-    setTimeout(() => setIsSubmitted(false), 5000)
+    setIsSubmitting(true)
+    setSubmitError('')
+
+    // Verifica se tem a chave do Web3Forms configurada
+    const web3formsKey = process.env.NEXT_PUBLIC_WEB3FORMS_KEY
+
+    if (!web3formsKey || web3formsKey === 'YOUR_ACCESS_KEY_HERE') {
+      // Fallback para mailto se não tiver chave configurada
+      const subject = encodeURIComponent(`Novo contato - ${formData.project}`)
+      const body = encodeURIComponent(`
+Nome: ${formData.name}
+Email: ${formData.email}
+Telefone: ${formData.phone || 'Não informado'}
+Tipo de Projeto: ${formData.project}
+Orçamento: ${formData.budget || 'Não informado'}
+
+Mensagem:
+${formData.message}
+      `)
+      
+      window.location.href = `mailto:contato@scorpionstech.com.br?subject=${subject}&body=${body}`
+      
+      setIsSubmitted(true)
+      setFormData({
+        name: '',
+        email: '',
+        phone: '',
+        project: '',
+        budget: '',
+        message: ''
+      })
+      setIsSubmitting(false)
+      setTimeout(() => setIsSubmitted(false), 6000)
+      return
+    }
+
+    try {
+      // Web3Forms - envio via API
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          access_key: web3formsKey,
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          subject: `Novo contato - ${formData.project}`,
+          message: `
+Tipo de Projeto: ${formData.project}
+Orçamento: ${formData.budget || 'Não informado'}
+Telefone: ${formData.phone || 'Não informado'}
+
+Mensagem:
+${formData.message}
+          `,
+          from_name: formData.name,
+          replyto: formData.email
+        })
+      })
+
+      const result = await response.json()
+
+      if (result.success) {
+        setIsSubmitted(true)
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          project: '',
+          budget: '',
+          message: ''
+        })
+        setTimeout(() => setIsSubmitted(false), 6000)
+      } else {
+        setSubmitError('Erro ao enviar mensagem. Tente novamente ou use o WhatsApp.')
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error)
+      setSubmitError('Erro de conexão. Por favor, tente novamente ou entre em contato via WhatsApp.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -79,6 +162,13 @@ const Contact = () => {
                 <p className="text-green-800">
                   Mensagem enviada com sucesso! Entraremos em contato em breve.
                 </p>
+              </div>
+            )}
+
+            {submitError && (
+              <div className="bg-red-50 border border-red-200 rounded-lg p-4 mb-6 flex items-center space-x-3">
+                <AlertCircle className="w-6 h-6 text-red-600" />
+                <p className="text-red-800">{submitError}</p>
               </div>
             )}
 
@@ -189,10 +279,11 @@ const Contact = () => {
 
               <button
                 type="submit"
-                className="w-full bg-gradient-to-r from-primary-600 to-accent-500 hover:from-primary-700 hover:to-accent-600 text-white font-semibold py-4 px-6 rounded-lg transition-all duration-300 transform hover:scale-[1.02] flex items-center justify-center space-x-2"
+                disabled={isSubmitting}
+                className="w-full bg-gradient-to-r from-primary-600 to-accent-500 hover:from-primary-700 hover:to-accent-600 text-white font-semibold py-4 px-6 rounded-lg transition-all duration-300 transform hover:scale-[1.02] flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100"
               >
-                <Send className="w-5 h-5" />
-                <span>Enviar Mensagem</span>
+                <Send className={`w-5 h-5 ${isSubmitting ? 'animate-pulse' : ''}`} />
+                <span>{isSubmitting ? 'Enviando...' : 'Enviar Mensagem'}</span>
               </button>
 
             </form>
