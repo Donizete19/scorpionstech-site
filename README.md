@@ -180,7 +180,7 @@ Edite a função `handleSubmit` em `Contact.tsx` para integrar com seu backend.
 
 Para dúvidas ou suporte:
 - Email: contato@scorpionstech.com.br
-- WhatsApp: +55 (11) 9 9999-9999
+- WhatsApp: +55 (11) 995946630
 
 ---
 
