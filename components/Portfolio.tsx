@@ -8,32 +8,6 @@ const Portfolio = () => {
 
   const projects = [
     {
-      title: 'Barber Client - App do Cliente',
-      category: 'Negócios',
-      description: 'Aplicativo para clientes agendarem serviços de barbearia. Login, agendamento, histórico e avaliações.',
-      image: '/screenshots/tela-login.png',
-      technologies: ['React Native', 'Firebase', 'Authentication', 'Firestore'],
-      stats: { status: 'Disponível', rating: 'v1.0 (8.9MB)', users: 'Grátis' },
-      links: { 
-        apk: 'https://github.com/Techscorpion-com/barber-user-app-/releases/download/v1.0.0/app-release.apk',
-        contact: 'https://wa.me/5511995946630?text=Olá! Vi o app Barber Client no seu portfólio e gostaria de criar um app similar. Podemos conversar?'
-      },
-      downloadable: true
-    },
-    {
-      title: 'Barber Admin - App do Barbeiro',
-      category: 'Negócios',
-      description: 'Painel administrativo para barbeiros gerenciarem agendamentos, clientes, serviços e relatórios.',
-      image: '/screenshots/painel-admin.png',
-      technologies: ['React Native', 'Firebase', 'Admin SDK', 'Analytics'],
-      stats: { status: 'Disponível', rating: 'v1.0 (49MB)', users: 'Grátis' },
-      links: { 
-        apk: 'https://github.com/Techscorpion-com/barber-admin-app/releases/download/v1.0.0/app-admin-release.apk',
-        contact: 'https://wa.me/5511995946630?text=Olá! Vi o app Barber Admin no seu portfólio e gostaria de criar um app similar. Podemos conversar?'
-      },
-      downloadable: true
-    },
-    {
       title: 'Calculadora Profissional',
       category: 'Produtividade',
       description: 'Calculadora moderna com histórico, conversões e funções científicas.',
@@ -86,7 +60,7 @@ const Portfolio = () => {
     }
   ]
 
-  const categories = ['Todos', 'Negócios', 'Produtividade', 'Web']
+  const categories = ['Todos', 'Produtividade', 'Web']
 
   return (
     <section id="portfolio" className="section-padding bg-white">
