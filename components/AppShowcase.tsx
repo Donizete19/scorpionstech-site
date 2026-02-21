@@ -7,101 +7,22 @@ const AppShowcase = () => {
   const [selectedApp, setSelectedApp] = useState<string | null>(null)
   const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
-  const apps = [
-    {
-      id: 'barber-client',
-      title: 'Barber Client',
-      subtitle: 'App do Cliente',
-      description: 'Aplicativo completo para clientes agendarem serviços de barbearia',
-      color: 'from-blue-500 to-blue-700',
-      features: [
-        'Login seguro com Firebase',
-        'Agendamento de horários',
-        'Histórico de serviços',
-        'Avaliações e feedback',
-        'Notificações push',
-        'Interface moderna e intuitiva'
-      ],
-      screenshots: [
-        {
-          src: '/screenshots/barber-client-screenshot.png',
-          title: 'Tela Principal',
-          description: 'Interface principal do app com navegação intuitiva'
-        },
-        {
-          src: '/screenshots/tela-login.png',
-          title: 'Tela de Login',
-          description: 'Login seguro para clientes'
-        },
-        {
-          src: '/screenshots/criar-conta-usuario.png',
-          title: 'Criar Conta',
-          description: 'Cadastro de novos usuários com validação'
-        },
-        {
-          src: '/screenshots/tela-agendamentos.png',
-          title: 'Fazer Agendamento',
-          description: 'Sistema de agendamento de serviços'
-        },
-        {
-          src: '/screenshots/ver-agendamentos.png',
-          title: 'Meus Agendamentos',
-          description: 'Visualização dos agendamentos do cliente'
-        }
-      ]
-    },
-    {
-      id: 'barber-admin',
-      title: 'Barber Admin',
-      subtitle: 'App do Barbeiro',
-      description: 'Painel administrativo completo para barbeiros e salões',
-      color: 'from-purple-500 to-purple-700',
-      features: [
-        'Gerenciamento de agendamentos',
-        'Controle de clientes',
-        'Relatórios financeiros',
-        'Dashboard analítico',
-        'Gestão de serviços',
-        'Notificações em tempo real'
-      ],
-      screenshots: [
-        {
-          src: '/screenshots/painel-admin.png',
-          title: 'Painel Principal',
-          description: 'Dashboard principal com visão geral do negócio'
-        },
-        {
-          src: '/screenshots/admin-login.png',
-          title: 'Login do Admin',
-          description: 'Acesso seguro para administradores'
-        },
-        {
-          src: '/screenshots/acesso-do-admin.png',
-          title: 'Controle de Acesso',
-          description: 'Gerenciamento de permissões e acessos'
-        },
-        {
-          src: '/screenshots/cadastro-barbearia.png',
-          title: 'Cadastro da Barbearia',
-          description: 'Configuração inicial do estabelecimento'
-        },
-        {
-          src: '/screenshots/adicionar-serviços.png',
-          title: 'Adicionar Serviços',
-          description: 'Cadastro e gestão de serviços oferecidos'
-        },
-        {
-          src: '/screenshots/visualizar-agendamentos.png',
-          title: 'Ver Agendamentos',
-          description: 'Visualização completa dos agendamentos'
-        },
-        {
-          src: '/screenshots/bloqueio-de-horarios.png',
-          title: 'Bloqueio de Horários',
-          description: 'Gestão de disponibilidade e bloqueios'
-        }
-      ]
-    }
+  // Apps array - adicione seus apps aqui
+  const apps: any[] = [
+    // Exemplo de estrutura:
+    // {
+    //   id: 'seu-app',
+    //   title: 'Nome do App',
+    //   subtitle: 'Descrição curta',
+    //   description: 'Descrição completa do aplicativo',
+    //   color: 'from-blue-500 to-blue-700',
+    //   apkUrl: 'url-do-apk',
+    //   playStoreUrl: 'url-da-play-store', // opcional
+    //   features: ['Feature 1', 'Feature 2', ...],
+    //   screenshots: [
+    //     { src: '/path/image.png', title: 'Título', description: 'Descrição' }
+    //   ]
+    // }
   ]
 
   const selectedAppData = apps.find(app => app.id === selectedApp)
@@ -137,8 +58,20 @@ const AppShowcase = () => {
         </div>
 
         {/* Apps Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-          {apps.map((app) => (
+        {apps.length === 0 ? (
+          <div className="text-center py-16">
+            <div className="inline-block p-6 bg-white rounded-2xl shadow-lg">
+              <Smartphone className="w-16 h-16 text-gray-400 mx-auto mb-4" />
+              <h3 className="text-2xl font-bold text-gray-700 mb-2">Apps em breve!</h3>
+              <p className="text-gray-500 max-w-md">
+                Estamos preparando novos aplicativos incríveis para demonstração.
+                <br />Em breve você poderá explorar as funcionalidades aqui!
+              </p>
+            </div>
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+            {apps.map((app) => (
             <div 
               key={app.id}
               className="group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden cursor-pointer transform hover:scale-105"
@@ -196,7 +129,8 @@ const AppShowcase = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
             </div>
           ))}
-        </div>
+          </div>
+        )}
 
         {/* Modal de Demonstração */}
         {selectedApp && selectedAppData && (
