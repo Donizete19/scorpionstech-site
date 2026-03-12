@@ -1,47 +1,54 @@
 'use client'
 
-import { useState } from 'react'
-import { X, ZoomIn, ChevronLeft, ChevronRight, Smartphone, Play } from 'lucide-react'
+import { Smartphone, Download } from 'lucide-react'
 
 const AppShowcase = () => {
-  const [selectedApp, setSelectedApp] = useState<string | null>(null)
-  const [currentImageIndex, setCurrentImageIndex] = useState(0)
 
   // Apps array - adicione seus apps aqui
   const apps: any[] = [
-    // Exemplo de estrutura:
-    // {
-    //   id: 'seu-app',
-    //   title: 'Nome do App',
-    //   subtitle: 'Descrição curta',
-    //   description: 'Descrição completa do aplicativo',
-    //   color: 'from-blue-500 to-blue-700',
-    //   apkUrl: 'url-do-apk',
-    //   playStoreUrl: 'url-da-play-store', // opcional
-    //   features: ['Feature 1', 'Feature 2', ...],
-    //   screenshots: [
-    //     { src: '/path/image.png', title: 'Título', description: 'Descrição' }
-    //   ]
-    // }
+    {
+      id: 'admin-app',
+      title: 'App Admin',
+      subtitle: 'Painel Administrativo',
+      description: 'Sistema completo de gerenciamento administrativo com controle total de funcionalidades, usuários e configurações.',
+      color: 'from-blue-600 to-blue-800',
+      apkUrl: '', // Adicionar URL do APK aqui
+      playStoreUrl: '', // opcional
+      features: [
+        'Painel de controle completo',
+        'Gerenciamento de usuários',
+        'Relatórios e estatísticas',
+        'Configurações avançadas',
+        'Notificações em tempo real',
+        'Interface intuitiva e responsiva'
+      ],
+      screenshots: [
+        // Screenshots serão adicionados posteriormente
+      ]
+    },
+    {
+      id: 'user-app',
+      title: 'App Usuário',
+      subtitle: 'Aplicativo do Cliente',
+      description: 'Aplicativo intuitivo para usuários finais com interface amigável e funcionalidades essenciais para o dia a dia.',
+      color: 'from-orange-500 to-orange-700',
+      apkUrl: '', // Adicionar URL do APK aqui
+      playStoreUrl: '', // opcional
+      features: [
+        'Interface amigável e moderna',
+        'Acesso rápido às funcionalidades',
+        'Perfil personalizável',
+        'Notificações importantes',
+        'Suporte integrado',
+        'Modo offline disponível'
+      ],
+      screenshots: [
+        // Screenshots serão adicionados posteriormente
+      ]
+    }
   ]
 
-  const selectedAppData = apps.find(app => app.id === selectedApp)
 
-  const nextImage = () => {
-    if (selectedAppData) {
-      setCurrentImageIndex((prev) => 
-        prev === selectedAppData.screenshots.length - 1 ? 0 : prev + 1
-      )
-    }
-  }
-
-  const prevImage = () => {
-    if (selectedAppData) {
-      setCurrentImageIndex((prev) => 
-        prev === 0 ? selectedAppData.screenshots.length - 1 : prev - 1
-      )
-    }
-  }
 
   return (
     <section id="app-showcase" className="section-padding bg-gradient-to-br from-gray-50 to-gray-100">
@@ -50,10 +57,10 @@ const AppShowcase = () => {
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-dark-900 mb-6">
-            Apps em <span className="gradient-text">Funcionamento</span>
+            Nossos <span className="gradient-text">Apps</span>
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-            Veja nossos aplicativos em ação! Clique nos apps para explorar as telas e funcionalidades reais.
+            Conheça nossos aplicativos e baixe diretamente para experimentar.
           </p>
         </div>
 
@@ -74,11 +81,7 @@ const AppShowcase = () => {
             {apps.map((app) => (
             <div 
               key={app.id}
-              className="group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden cursor-pointer transform hover:scale-105"
-              onClick={() => {
-                setSelectedApp(app.id)
-                setCurrentImageIndex(0)
-              }}
+              className="group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden transform hover:scale-105"
             >
               {/* Background Gradient */}
               <div className={`absolute inset-0 bg-gradient-to-br ${app.color} opacity-5 group-hover:opacity-10 transition-opacity`}></div>
@@ -113,15 +116,19 @@ const AppShowcase = () => {
                   )}
                 </div>
 
-                {/* CTA */}
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center text-primary-600 font-semibold">
-                    <Play className="w-5 h-5 mr-2" />
-                    Ver Funcionamento
-                  </div>
-                  <div className="text-sm text-gray-500">
-                    {app.screenshots.length} tela{app.screenshots.length > 1 ? 's' : ''}
-                  </div>
+                {/* CTAs */}
+                <div className="space-y-3">
+                  {app.apkUrl && (
+                    <a
+                      href={app.apkUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`flex items-center justify-center bg-gradient-to-r ${app.color} text-white font-semibold py-3 px-4 rounded-lg transition-all duration-300 transform hover:scale-105`}
+                    >
+                      <Download className="w-5 h-5 mr-2" />
+                      Baixar APK
+                    </a>
+                  )}
                 </div>
               </div>
 
@@ -129,142 +136,6 @@ const AppShowcase = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
             </div>
           ))}
-          </div>
-        )}
-
-        {/* Modal de Demonstração */}
-        {selectedApp && selectedAppData && (
-          <div 
-            className="fixed inset-0 bg-black/90 backdrop-blur-sm z-50 flex items-center justify-center p-4"
-            onClick={() => setSelectedApp(null)}
-          >
-            <div className="relative max-w-6xl w-full max-h-[90vh] bg-white rounded-2xl overflow-hidden">
-              
-              {/* Header */}
-              <div className={`bg-gradient-to-r ${selectedAppData.color} text-white p-6`}>
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h3 className="text-2xl font-bold">{selectedAppData.title}</h3>
-                    <p className="text-white/90">{selectedAppData.subtitle}</p>
-                  </div>
-                  <button
-                    className="bg-white/20 backdrop-blur-sm rounded-full p-2 hover:bg-white/30 transition-colors"
-                    onClick={() => setSelectedApp(null)}
-                  >
-                    <X className="w-6 h-6" />
-                  </button>
-                </div>
-              </div>
-
-              <div className="flex flex-col lg:flex-row">
-                {/* Image Viewer */}
-                <div className="lg:w-2/3 relative bg-gray-100">
-                  <div className="aspect-[9/16] max-h-[60vh] relative bg-black/5 flex items-center justify-center">
-                    <img
-                      src={selectedAppData.screenshots[currentImageIndex].src}
-                      alt={selectedAppData.screenshots[currentImageIndex].title}
-                      className="max-w-full max-h-full object-contain rounded-lg shadow-2xl"
-                      onClick={(e) => e.stopPropagation()}
-                    />
-                    
-                    {/* Navigation Arrows */}
-                    {selectedAppData.screenshots.length > 1 && (
-                      <>
-                        <button
-                          className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white/90 backdrop-blur-sm rounded-full p-2 hover:bg-white transition-colors shadow-lg"
-                          onClick={(e) => {
-                            e.stopPropagation()
-                            prevImage()
-                          }}
-                        >
-                          <ChevronLeft className="w-6 h-6 text-gray-800" />
-                        </button>
-                        <button
-                          className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white/90 backdrop-blur-sm rounded-full p-2 hover:bg-white transition-colors shadow-lg"
-                          onClick={(e) => {
-                            e.stopPropagation()
-                            nextImage()
-                          }}
-                        >
-                          <ChevronRight className="w-6 h-6 text-gray-800" />
-                        </button>
-                      </>
-                    )}
-                  </div>
-
-                  {/* Image Counter */}
-                  {selectedAppData.screenshots.length > 1 && (
-                    <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-black/70 text-white px-3 py-1 rounded-full text-sm">
-                      {currentImageIndex + 1} / {selectedAppData.screenshots.length}
-                    </div>
-                  )}
-                </div>
-
-                {/* App Info */}
-                <div className="lg:w-1/3 p-6">
-                  <div className="mb-6">
-                    <h4 className="text-xl font-bold text-dark-900 mb-2">
-                      {selectedAppData.screenshots[currentImageIndex].title}
-                    </h4>
-                    <p className="text-gray-600">
-                      {selectedAppData.screenshots[currentImageIndex].description}
-                    </p>
-                  </div>
-
-                  <div className="mb-6">
-                    <h5 className="font-semibold text-dark-900 mb-3">Funcionalidades:</h5>
-                    <div className="space-y-2">
-                      {selectedAppData.features.map((feature, index) => (
-                        <div key={index} className="flex items-center text-sm text-gray-700">
-                          <div className={`w-2 h-2 bg-gradient-to-r ${selectedAppData.color} rounded-full mr-3 flex-shrink-0`}></div>
-                          {feature}
-                        </div>
-                      ))}
-                    </div>
-                  </div>
-
-                  {/* Thumbnails */}
-                  {selectedAppData.screenshots.length > 1 && (
-                    <div className="mb-6">
-                      <h5 className="font-semibold text-dark-900 mb-3">Outras Telas:</h5>
-                      <div className="flex gap-2 overflow-x-auto">
-                        {selectedAppData.screenshots.map((screenshot, index) => (
-                          <button
-                            key={index}
-                            className={`flex-shrink-0 w-16 h-20 rounded-lg overflow-hidden border-2 transition-colors ${
-                              index === currentImageIndex ? 'border-primary-500' : 'border-gray-200'
-                            }`}
-                            onClick={(e) => {
-                              e.stopPropagation()
-                              setCurrentImageIndex(index)
-                            }}
-                          >
-                            <img
-                              src={screenshot.src}
-                              alt={screenshot.title}
-                              className="w-full h-full object-cover"
-                            />
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-
-                  {/* CTA */}
-                  <div className="space-y-3">
-                    <a
-                      href={`https://wa.me/5511995946630?text=Olá! Vi o ${selectedAppData.title} funcionando no seu site e gostaria de criar um app similar. Podemos conversar?`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className={`block w-full bg-gradient-to-r ${selectedAppData.color} text-white font-semibold py-3 px-4 rounded-lg text-center transition-all duration-300 transform hover:scale-105`}
-                      onClick={(e) => e.stopPropagation()}
-                    >
-                      Quero um App Assim!
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         )}
 
