@@ -12,7 +12,8 @@ const AppShowcase = () => {
       subtitle: 'Painel Administrativo',
       description: 'Sistema completo de gerenciamento administrativo com controle total de funcionalidades, usuários e configurações.',
       color: 'from-blue-600 to-blue-800',
-      apkUrl: '', // Adicionar URL do APK aqui
+      apkUrl: '/techscorpion-admin.apk', // APK disponível para download
+      webUrl: 'https://techscorpion-app-b4f30.web.app/admin', // Acesso Web - Barbeiros/Administradores
       playStoreUrl: '', // opcional
       features: [
         'Painel de controle completo',
@@ -32,7 +33,8 @@ const AppShowcase = () => {
       subtitle: 'Aplicativo do Cliente',
       description: 'Aplicativo intuitivo para usuários finais com interface amigável e funcionalidades essenciais para o dia a dia.',
       color: 'from-orange-500 to-orange-700',
-      apkUrl: '', // Adicionar URL do APK aqui
+      apkUrl: '/techscorpion-user.apk', // APK disponível para download
+      webUrl: 'https://techscorpion-app-b4f30.web.app/user', // Acesso Web - Clientes
       playStoreUrl: '', // opcional
       features: [
         'Interface amigável e moderna',
@@ -118,6 +120,17 @@ const AppShowcase = () => {
 
                 {/* CTAs */}
                 <div className="space-y-3">
+                  {app.webUrl && (
+                    <a
+                      href={app.webUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={`flex items-center justify-center bg-gradient-to-r ${app.color} text-white font-semibold py-3 px-4 rounded-lg transition-all duration-300 transform hover:scale-105`}
+                    >
+                      <Smartphone className="w-5 h-5 mr-2" />
+                      {app.id === 'admin-app' ? '📱 Acessar ADMIN' : '📱 Acessar USER'}
+                    </a>
+                  )}
                   {app.apkUrl && (
                     <a
                       href={app.apkUrl}
