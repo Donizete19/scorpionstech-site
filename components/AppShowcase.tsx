@@ -103,7 +103,7 @@ const AppShowcase = () => {
 
                 {/* Features */}
                 <div className="space-y-2 mb-6">
-                  {app.features.slice(0, 3).map((feature, index) => (
+                  {app.features.slice(0, 3).map((feature: string, index: number) => (
                     <div key={index} className="flex items-center text-sm text-gray-600">
                       <div className={`w-2 h-2 bg-gradient-to-r ${app.color} rounded-full mr-3`}></div>
                       {feature}
