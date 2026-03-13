@@ -12,6 +12,7 @@ const AppShowcase = () => {
       description: 'Sistema completo de gerenciamento administrativo com controle total de funcionalidades, usuários e configurações.',
       color: 'from-blue-600 to-blue-800',
       apkUrl: '/techscorpion-admin.apk', // APK disponível para download
+      webUrl: 'https://techscorpion-app-b4f30.web.app/admin', // Acesso Web - Barbeiros/Administradores
       playStoreUrl: '', // opcional
       features: [
         'Painel de controle completo',
@@ -32,6 +33,7 @@ const AppShowcase = () => {
       description: 'Aplicativo intuitivo para usuários finais com interface amigável e funcionalidades essenciais para o dia a dia.',
       color: 'from-orange-500 to-orange-700',
       apkUrl: '/techscorpion-user.apk', // APK disponível para download
+      webUrl: 'https://techscorpion-app-b4f30.web.app/user', // Acesso Web - Clientes
       playStoreUrl: '', // opcional
       features: [
         'Interface amigável e moderna',
