@@ -3,8 +3,7 @@
 import { Smartphone, Download } from 'lucide-react'
 
 const AppShowcase = () => {
-
-  // Apps array - adicione seus apps aqui
+  // Apps disponíveis para download
   const apps: any[] = [
     {
       id: 'admin-app',
