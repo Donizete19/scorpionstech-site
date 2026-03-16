@@ -46,6 +46,23 @@ const AppShowcase = () => {
       screenshots: [
         // Screenshots serão adicionados posteriormente
       ]
+    },
+    {
+      id: 'calculadora-app',
+      title: 'Calculadora Profissional',
+      subtitle: 'Científica e Completa',
+      description: 'Calculadora científica completa com histórico, modo escuro/claro e todas as funções matemáticas essenciais.',
+      color: 'from-purple-600 to-purple-800',
+      webUrl: '/calculadora', // Acesso Web - Calculadora
+      features: [
+        'Operações básicas e científicas',
+        'Histórico de cálculos',
+        'Modo escuro/claro',
+        'Funções trigonométricas',
+        'Logaritmos e constantes',
+        'Interface moderna e responsiva'
+      ],
+      screenshots: []
     }
   ]
 
@@ -122,12 +139,14 @@ const AppShowcase = () => {
                   {app.webUrl && (
                     <a
                       href={app.webUrl}
-                      target="_blank"
+                      target={app.id === 'calculadora-app' ? '_self' : '_blank'}
                       rel="noopener noreferrer"
                       className={`flex items-center justify-center bg-gradient-to-r ${app.color} text-white font-semibold py-3 px-4 rounded-lg transition-all duration-300 transform hover:scale-105`}
                     >
                       <Smartphone className="w-5 h-5 mr-2" />
-                      {app.id === 'admin-app' ? '📱 Acessar ADMIN' : '📱 Acessar USER'}
+                      {app.id === 'admin-app' ? '📱 Acessar ADMIN' : 
+                       app.id === 'user-app' ? '📱 Acessar USER' : 
+                       '🧮 Usar Calculadora'}
                     </a>
                   )}
                   {app.apkUrl && (
