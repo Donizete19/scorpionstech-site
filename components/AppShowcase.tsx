@@ -63,6 +63,23 @@ const AppShowcase = () => {
         'Interface moderna e responsiva'
       ],
       screenshots: []
+    },
+    {
+      id: 'tarefas-app',
+      title: 'Lista de Tarefas Smart',
+      subtitle: 'Organize sua Rotina',
+      description: 'Lista de tarefas inteligente com filtros, edição rápida e sincronização local para manter sua produtividade em dia.',
+      color: 'from-green-600 to-green-800',
+      webUrl: '/tarefas', // Acesso Web - Tarefas
+      features: [
+        'Adicionar e editar tarefas',
+        'Marcar como concluída',
+        'Filtros (todas/ativas/concluídas)',
+        'Estatísticas de produtividade',
+        'Salva automaticamente',
+        'Modo escuro/claro'
+      ],
+      screenshots: []
     }
   ]
 
@@ -139,14 +156,15 @@ const AppShowcase = () => {
                   {app.webUrl && (
                     <a
                       href={app.webUrl}
-                      target={app.id === 'calculadora-app' ? '_self' : '_blank'}
+                      target={app.id === 'calculadora-app' || app.id === 'tarefas-app' ? '_self' : '_blank'}
                       rel="noopener noreferrer"
                       className={`flex items-center justify-center bg-gradient-to-r ${app.color} text-white font-semibold py-3 px-4 rounded-lg transition-all duration-300 transform hover:scale-105`}
                     >
                       <Smartphone className="w-5 h-5 mr-2" />
                       {app.id === 'admin-app' ? '📱 Acessar ADMIN' : 
                        app.id === 'user-app' ? '📱 Acessar USER' : 
-                       '🧮 Usar Calculadora'}
+                       app.id === 'calculadora-app' ? '🧮 Usar Calculadora' :
+                       '✅ Usar Lista de Tarefas'}
                     </a>
                   )}
                   {app.apkUrl && (
