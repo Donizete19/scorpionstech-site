@@ -80,6 +80,40 @@ const AppShowcase = () => {
         'Modo escuro/claro'
       ],
       screenshots: []
+    },
+    {
+      id: 'portfolio-app',
+      title: 'Portfólio Responsivo',
+      subtitle: 'Gerencie Seus Projetos',
+      description: 'Sistema completo para criar e gerenciar seu portfólio profissional com galeria de projetos, filtros e design responsivo.',
+      color: 'from-pink-600 to-pink-800',
+      webUrl: '/portfolio',
+      features: [
+        'Adicionar projetos facilmente',
+        'Upload de imagens',
+        'Sistema de filtros por tags',
+        'Design totalmente responsivo',
+        'Modo escuro/claro',
+        'Edição e exclusão rápida'
+      ],
+      screenshots: []
+    },
+    {
+      id: 'agendamento-app',
+      title: 'Sistema de Agendamento',
+      subtitle: 'Gerencie Compromissos',
+      description: 'Sistema profissional de agendamento com controle de status, notificações e gerenciamento completo de compromissos.',
+      color: 'from-indigo-600 to-indigo-800',
+      webUrl: '/agendamento',
+      features: [
+        'Agendamento rápido e fácil',
+        'Controle de status',
+        'Filtros inteligentes',
+        'Estatísticas em tempo real',
+        'Modo escuro/claro',
+        'Notificações de confirmação'
+      ],
+      screenshots: []
     }
   ]
 
@@ -156,7 +190,7 @@ const AppShowcase = () => {
                   {app.webUrl && (
                     <a
                       href={app.webUrl}
-                      target={app.id === 'calculadora-app' || app.id === 'tarefas-app' ? '_self' : '_blank'}
+                      target={app.id === 'calculadora-app' || app.id === 'tarefas-app' || app.id === 'portfolio-app' || app.id === 'agendamento-app' ? '_self' : '_blank'}
                       rel="noopener noreferrer"
                       className={`flex items-center justify-center bg-gradient-to-r ${app.color} text-white font-semibold py-3 px-4 rounded-lg transition-all duration-300 transform hover:scale-105`}
                     >
@@ -164,6 +198,9 @@ const AppShowcase = () => {
                       {app.id === 'admin-app' ? '📱 Acessar ADMIN' : 
                        app.id === 'user-app' ? '📱 Acessar USER' : 
                        app.id === 'calculadora-app' ? '🧮 Usar Calculadora' :
+                       app.id === 'tarefas-app' ? '✅ Usar Lista de Tarefas' :
+                       app.id === 'portfolio-app' ? '💼 Ver Portfólio' :
+                       app.id === 'agendamento-app' ? '📅 Fazer Agendamento' :
                        '✅ Usar Lista de Tarefas'}
                     </a>
                   )}
