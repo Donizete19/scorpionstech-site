@@ -7,7 +7,7 @@ const WhatsAppButton = () => {
   const [isOpen, setIsOpen] = useState(false)
   
   // CONFIGURE SEU NÚMERO AQUI (formato: 5511999999999)
-  const phoneNumber = '5511999999999'
+  const phoneNumber = '5511995946630'
   const message = 'Olá! Gostaria de saber mais sobre desenvolvimento de apps.'
   
   const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`
