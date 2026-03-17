@@ -8,19 +8,19 @@ const AppShowcase = () => {
     {
       id: 'admin-app',
       title: 'App Admin',
-      subtitle: 'Painel Administrativo',
-      description: 'Sistema completo de gerenciamento administrativo com controle total de funcionalidades, usuários e configurações.',
+      subtitle: 'Gestão para Barbearias e Salões',
+      description: 'Sistema profissional de gerenciamento para proprietários e administradores de barbearias e salões de beleza. Controle total de agendamentos, clientes, serviços, relatórios financeiros e equipe em uma única plataforma integrada.',
       color: 'from-blue-600 to-blue-800',
       apkUrl: '/techscorpion-admin.apk', // APK disponível para download
       webUrl: 'https://techscorpion-app-b4f30.web.app/admin', // Acesso Web - Barbeiros/Administradores
       playStoreUrl: '', // opcional
       features: [
-        'Painel de controle completo',
-        'Gerenciamento de usuários',
-        'Relatórios e estatísticas',
-        'Configurações avançadas',
-        'Notificações em tempo real',
-        'Interface intuitiva e responsiva'
+        'Gerenciamento de agendamentos e horários',
+        'Cadastro de clientes e histórico',
+        'Controle de serviços e preços',
+        'Relatórios financeiros e estatísticas',
+        'Gestão de equipe e profissionais',
+        'Dashboard completo em tempo real'
       ],
       screenshots: [
         // Screenshots serão adicionados posteriormente
@@ -29,19 +29,19 @@ const AppShowcase = () => {
     {
       id: 'user-app',
       title: 'App Usuário',
-      subtitle: 'Aplicativo do Cliente',
-      description: 'Aplicativo intuitivo para usuários finais com interface amigável e funcionalidades essenciais para o dia a dia.',
+      subtitle: 'Para Clientes e Usuários Finais',
+      description: 'Aplicativo intuitivo desenvolvido para clientes de barbearias e salões de beleza. Agende seus serviços, acompanhe histórico de atendimentos, receba notificações e gerencie seus agendamentos com praticidade total.',
       color: 'from-orange-500 to-orange-700',
       apkUrl: '/techscorpion-user.apk', // APK disponível para download
       webUrl: 'https://techscorpion-app-b4f30.web.app/user', // Acesso Web - Clientes
       playStoreUrl: '', // opcional
       features: [
-        'Interface amigável e moderna',
-        'Acesso rápido às funcionalidades',
-        'Perfil personalizável',
-        'Notificações importantes',
-        'Suporte integrado',
-        'Modo offline disponível'
+        'Agendamento rápido de serviços',
+        'Histórico completo de atendimentos',
+        'Visualização de horários disponíveis',
+        'Notificações de confirmação',
+        'Perfil pessoal e preferências',
+        'Avaliação de serviços prestados'
       ],
       screenshots: [
         // Screenshots serão adicionados posteriormente
