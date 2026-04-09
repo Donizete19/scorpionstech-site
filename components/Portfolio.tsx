@@ -1,6 +1,6 @@
 'use client'
 
-import { ExternalLink, MessageCircle, Star, Download, Play, X, ZoomIn } from 'lucide-react'
+import { ExternalLink, MessageCircle, Star, Download, X, ZoomIn } from 'lucide-react'
 import { useState } from 'react'
 
 const Portfolio = () => {
@@ -172,11 +172,12 @@ const Portfolio = () => {
                     {project.links.apk && (
                       <a 
                         href={project.links.apk}
-                        download
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="w-full bg-blue-600 hover:bg-blue-700 text-white text-sm font-medium py-2 px-4 rounded-lg flex items-center justify-center space-x-2 transition-colors"
                       >
                         <Download className="w-4 h-4" />
-                        <span>Download APK Direto</span>
+                        <span>Baixar App</span>
                       </a>
                     )}
                   </div>
@@ -208,7 +209,7 @@ const Portfolio = () => {
         {/* Bottom CTA */}
         <div className="text-center mt-16">
           <p className="text-xl text-gray-600 mb-8">
-            Apps disponíveis para download! Experimente nossos projetos e vamos criar o seu também.
+            Conheça nossos projetos publicados e vamos criar o seu tambem.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a href="#contact" className="btn-primary text-lg px-8 py-4">
