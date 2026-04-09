@@ -11,8 +11,7 @@ const AppShowcase = () => {
       subtitle: 'Gestão para Barbearias e Salões',
       description: 'Sistema profissional de gerenciamento para proprietários e administradores de barbearias e salões de beleza. Controle total de agendamentos, clientes, serviços, relatórios financeiros e equipe em uma única plataforma integrada.',
       color: 'from-blue-600 to-blue-800',
-      apkUrl: '/techscorpion-admin.apk', // APK disponível para download
-      webUrl: 'https://techscorpion-app-b4f30.web.app/admin', // Acesso Web - Barbeiros/Administradores
+      apkUrl: 'https://play.google.com/store/apps/details?id=com.techscorpion.admin',
       playStoreUrl: '', // opcional
       features: [
         'Gerenciamento de agendamentos e horários',
@@ -32,8 +31,7 @@ const AppShowcase = () => {
       subtitle: 'Para Clientes e Usuários Finais',
       description: 'Aplicativo intuitivo desenvolvido para clientes de barbearias e salões de beleza. Agende seus serviços, acompanhe histórico de atendimentos, receba notificações e gerencie seus agendamentos com praticidade total.',
       color: 'from-orange-500 to-orange-700',
-      apkUrl: '/techscorpion-user.apk', // APK disponível para download
-      webUrl: 'https://techscorpion-app-b4f30.web.app/user', // Acesso Web - Clientes
+      apkUrl: 'https://play.google.com/store/apps/details?id=com.techscorpion.app',
       playStoreUrl: '', // opcional
       features: [
         'Agendamento rápido de serviços',
@@ -150,12 +148,12 @@ const AppShowcase = () => {
             {apps.map((app) => (
             <div 
               key={app.id}
-              className="group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden transform hover:scale-105"
+              className="group relative h-full bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 overflow-hidden transform hover:scale-105"
             >
               {/* Background Gradient */}
               <div className={`absolute inset-0 bg-gradient-to-br ${app.color} opacity-5 group-hover:opacity-10 transition-opacity`}></div>
               
-              <div className="relative p-8">
+              <div className="relative flex h-full flex-col p-8">
                 {/* App Icon */}
                 <div className="flex items-center mb-6">
                   <div className={`w-16 h-16 bg-gradient-to-br ${app.color} rounded-2xl flex items-center justify-center shadow-lg`}>
@@ -171,7 +169,7 @@ const AppShowcase = () => {
                 <p className="text-gray-700 mb-6 leading-relaxed">{app.description}</p>
 
                 {/* Features */}
-                <div className="space-y-2 mb-6">
+                <div className="space-y-2 mb-6 flex-1">
                   {app.features.slice(0, 3).map((feature: string, index: number) => (
                     <div key={index} className="flex items-center text-sm text-gray-600">
                       <div className={`w-2 h-2 bg-gradient-to-r ${app.color} rounded-full mr-3`}></div>
@@ -186,7 +184,12 @@ const AppShowcase = () => {
                 </div>
 
                 {/* CTAs */}
-                <div className="space-y-3">
+                <div className="mt-auto space-y-3">
+                  {!app.webUrl && app.apkUrl && (
+                    <div className="flex items-center justify-center rounded-lg border border-gray-200 bg-gray-50 px-4 py-2 text-sm font-medium text-gray-600">
+                      Disponivel para Android
+                    </div>
+                  )}
                   {app.webUrl && (
                     <a
                       href={app.webUrl}
@@ -195,9 +198,7 @@ const AppShowcase = () => {
                       className={`flex items-center justify-center bg-gradient-to-r ${app.color} text-white font-semibold py-3 px-4 rounded-lg transition-all duration-300 transform hover:scale-105`}
                     >
                       <Smartphone className="w-5 h-5 mr-2" />
-                      {app.id === 'admin-app' ? '📱 Acessar ADMIN' : 
-                       app.id === 'user-app' ? '📱 Acessar USER' : 
-                       app.id === 'calculadora-app' ? '🧮 Usar Calculadora' :
+                      {app.id === 'calculadora-app' ? '🧮 Usar Calculadora' :
                        app.id === 'tarefas-app' ? '✅ Usar Lista de Tarefas' :
                        app.id === 'portfolio-app' ? '💼 Ver Portfólio' :
                        app.id === 'agendamento-app' ? '📅 Fazer Agendamento' :
