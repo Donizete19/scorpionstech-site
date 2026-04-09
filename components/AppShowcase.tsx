@@ -187,7 +187,7 @@ const AppShowcase = () => {
                 <div className="mt-auto space-y-3">
                   {!app.webUrl && app.apkUrl && (
                     <div className="flex items-center justify-center rounded-lg border border-gray-200 bg-gray-50 px-4 py-2 text-sm font-medium text-gray-600">
-                      Disponivel para Android
+                      {app.apkUrl.includes('play.google.com') ? 'Disponivel na Play Store' : 'Disponivel para Android'}
                     </div>
                   )}
                   {app.webUrl && (
