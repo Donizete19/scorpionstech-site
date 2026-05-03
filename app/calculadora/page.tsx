@@ -1,7 +1,16 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import AdSlot from '@/components/AdSlot'
 import { Calculator, History, Moon, Sun, Delete, RotateCcw } from 'lucide-react'
+
+const calculatorAdSlot = process.env.NEXT_PUBLIC_GAM_SLOT_CALCULATOR
+
+const calculatorAdMapping = [
+  { viewport: [1200, 0] as [number, number], sizes: [[728, 90], [336, 280], [300, 250]] as [number, number][] },
+  { viewport: [768, 0] as [number, number], sizes: [[728, 90], [300, 250]] as [number, number][] },
+  { viewport: [0, 0] as [number, number], sizes: [[320, 100], [300, 250], [320, 50]] as [number, number][] },
+]
 
 export default function CalculadoraPage() {
   const [display, setDisplay] = useState('0')
@@ -215,6 +224,15 @@ export default function CalculadoraPage() {
       </header>
 
       <div className="container mx-auto px-4 py-8">
+        <div className="mb-6">
+          <AdSlot
+            slotPath={calculatorAdSlot}
+            label="Publicidade"
+            sizes={[[728, 90], [336, 280], [300, 250], [320, 100], [320, 50]]}
+            mapping={calculatorAdMapping}
+            minHeight={90}
+          />
+        </div>
         <div className="max-w-4xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
           {/* Calculadora */}
           <div className={`lg:col-span-2 ${cardBg} rounded-2xl shadow-2xl p-6`}>

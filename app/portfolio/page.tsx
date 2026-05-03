@@ -1,7 +1,16 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import AdSlot from '@/components/AdSlot'
 import { Briefcase, Plus, Edit2, Trash2, Save, X, ExternalLink, Moon, Sun, Image as ImageIcon } from 'lucide-react'
+
+const portfolioAdSlot = process.env.NEXT_PUBLIC_GAM_SLOT_PORTFOLIO
+
+const portfolioAdMapping = [
+  { viewport: [1200, 0] as [number, number], sizes: [[728, 90], [336, 280], [300, 250]] as [number, number][] },
+  { viewport: [768, 0] as [number, number], sizes: [[728, 90], [300, 250]] as [number, number][] },
+  { viewport: [0, 0] as [number, number], sizes: [[320, 100], [300, 250], [320, 50]] as [number, number][] },
+]
 
 interface Project {
   id: string
@@ -166,6 +175,15 @@ export default function PortfolioPage() {
       </header>
 
       <div className="container mx-auto px-4 py-8">
+        <div className="mx-auto mb-8 max-w-5xl">
+          <AdSlot
+            slotPath={portfolioAdSlot}
+            label="Publicidade"
+            sizes={[[728, 90], [336, 280], [300, 250], [320, 100], [320, 50]]}
+            mapping={portfolioAdMapping}
+            minHeight={90}
+          />
+        </div>
         {/* Formulário */}
         {isEditing && (
           <div className={`${cardBg} rounded-2xl shadow-2xl p-6 mb-8`}>

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Script from 'next/script'
+import GoogleAdManager from '@/components/GoogleAdManager'
 import GoogleAnalytics from '@/components/GoogleAnalytics'
 import '../styles/globals.css'
 
@@ -108,6 +109,7 @@ export default function RootLayout({
         </Script>
       </head>
       <body>
+        <GoogleAdManager />
         <GoogleAnalytics />
         {children}
       </body>

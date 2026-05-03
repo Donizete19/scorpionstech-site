@@ -1,7 +1,16 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import AdSlot from '@/components/AdSlot'
 import { CheckSquare, Plus, Trash2, Edit2, Check, X, Moon, Sun, Filter } from 'lucide-react'
+
+const tasksAdSlot = process.env.NEXT_PUBLIC_GAM_SLOT_TASKS
+
+const tasksAdMapping = [
+  { viewport: [1200, 0] as [number, number], sizes: [[728, 90], [336, 280], [300, 250]] as [number, number][] },
+  { viewport: [768, 0] as [number, number], sizes: [[728, 90], [300, 250]] as [number, number][] },
+  { viewport: [0, 0] as [number, number], sizes: [[320, 100], [300, 250], [320, 50]] as [number, number][] },
+]
 
 interface Task {
   id: string
@@ -135,6 +144,15 @@ export default function TarefasPage() {
 
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-3xl mx-auto">
+          <div className="mb-6">
+            <AdSlot
+              slotPath={tasksAdSlot}
+              label="Publicidade"
+              sizes={[[728, 90], [336, 280], [300, 250], [320, 100], [320, 50]]}
+              mapping={tasksAdMapping}
+              minHeight={90}
+            />
+          </div>
           {/* Estatísticas */}
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mb-6">
             <div className={`${cardBg} rounded-lg p-4 shadow-lg`}>
