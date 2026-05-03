@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import Script from 'next/script'
+import GoogleAnalytics from '@/components/GoogleAnalytics'
 import '../styles/globals.css'
 
 export const metadata: Metadata = {
@@ -57,20 +58,6 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <head>
-        {/* Google Analytics 4 */}
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-F3KHLQDRHB"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);};
-            gtag('js', new Date());
-            gtag('config', 'G-F3KHLQDRHB');
-          `}
-        </Script>
-
         {/* Microsoft Clarity */}
         <Script id="microsoft-clarity" strategy="afterInteractive">
           {`
@@ -121,6 +108,7 @@ export default function RootLayout({
         </Script>
       </head>
       <body>
+        <GoogleAnalytics />
         {children}
       </body>
     </html>
