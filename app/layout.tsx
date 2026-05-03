@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Script from 'next/script'
 import GoogleAdManager from '@/components/GoogleAdManager'
+import GoogleAdsense from '@/components/GoogleAdsense'
 import GoogleAnalytics from '@/components/GoogleAnalytics'
 import '../styles/globals.css'
 
@@ -110,6 +111,7 @@ export default function RootLayout({
       </head>
       <body>
         <GoogleAdManager />
+        <GoogleAdsense />
         <GoogleAnalytics />
         {children}
       </body>
