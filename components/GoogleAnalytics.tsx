@@ -11,7 +11,7 @@ declare global {
   }
 }
 
-const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim() || 'G-F3KHLQDRHB'
+const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID?.trim() || 'G-RBDH57BGK8'
 
 function trackPageView(url: string) {
   if (typeof window.gtag !== 'function') {
